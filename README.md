@@ -32,7 +32,7 @@ pod 'SwiftQRScanner', :git => ‘https://github.com/vinodiOS/SwiftQRScanner’
 Swift Package Manager
 ```ruby
 dependencies: [
-    .package(url: "https://github.com/vinodiOS/SwiftQRCodeScanner.git", from: "1.1.5")
+    .package(url: "https://github.com/vinodiOS/SwiftQRCodeScanner.git", from: "1.1.6")
 ]
 ```
 
