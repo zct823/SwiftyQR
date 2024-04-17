@@ -10,6 +10,9 @@ import Foundation
 import UIKit
 
 public struct QRScannerConfiguration {
+    
+    // MARK: - Properties
+    
     public var title: String
     public var hint: String?
     public var invalidQRCodeAlertTitle: String
@@ -25,21 +28,26 @@ public struct QRScannerConfiguration {
     public var readQRFromPhotos: Bool
     public var cancelButtonTitle: String
     public var cancelButtonTintColor: UIColor?
+    public var hideNavigationBar: Bool
+    
+    // MARK: - Initializers
     
     public init(title: String = "Scan QR Code",
-                hint: String = "Align QR code within frame to scan",
+                hint: String? = "Align QR code within frame to scan",
                 uploadFromPhotosTitle: String = "Upload from photos",
                 invalidQRCodeAlertTitle: String = "Invalid QR Code",
                 invalidQRCodeAlertActionTitle: String = "OK",
                 cameraImage: UIImage? = nil,
                 flashOnImage: UIImage? = nil,
+                galleryImage: UIImage? = nil,
                 length: CGFloat = 20.0,
                 color: UIColor = .green,
                 radius: CGFloat = 10.0,
                 thickness: CGFloat = 5.0,
                 readQRFromPhotos: Bool = true,
                 cancelButtonTitle: String = "Cancel",
-                cancelButtonTintColor: UIColor? = nil) {
+                cancelButtonTintColor: UIColor? = nil,
+                hideNavigationBar: Bool = false) {
         self.title = title
         self.hint = hint
         self.uploadFromPhotosTitle = uploadFromPhotosTitle
@@ -47,6 +55,7 @@ public struct QRScannerConfiguration {
         self.invalidQRCodeAlertActionTitle = invalidQRCodeAlertActionTitle
         self.cameraImage = cameraImage
         self.flashOnImage = flashOnImage
+        self.galleryImage = galleryImage
         self.length = length
         self.color = color
         self.radius = radius
@@ -54,25 +63,17 @@ public struct QRScannerConfiguration {
         self.readQRFromPhotos = readQRFromPhotos
         self.cancelButtonTitle = cancelButtonTitle
         self.cancelButtonTintColor = cancelButtonTintColor
+        self.hideNavigationBar = hideNavigationBar
     }
 }
 
+// MARK: - Default Configuration
+
 extension QRScannerConfiguration {
     public static var `default`: QRScannerConfiguration {
-        QRScannerConfiguration(title: "Scan QR Code",
-                               hint: "Align QR code within frame to scan",
-                               uploadFromPhotosTitle: "Upload from photos",
-                               invalidQRCodeAlertTitle: "Invalid QR Code",
-                               invalidQRCodeAlertActionTitle: "OK",
-                               cameraImage: nil,
-                               flashOnImage: nil,
-                               length: 20.0,
-                               color: .green,
-                               radius: 10.0,
-                               thickness: 5.0,
-                               readQRFromPhotos: true,
-                               cancelButtonTitle: "Cancel",
-                               cancelButtonTintColor: nil)
+        .init()
     }
 }
+
 #endif
+
