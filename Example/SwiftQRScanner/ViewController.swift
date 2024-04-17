@@ -40,17 +40,17 @@ class ViewController: UIViewController {
 }
 
 extension ViewController: QRScannerCodeDelegate {
-    func qrScannerDidFail(_ controller: UIViewController, error: QRCodeError) {
-        print("error:\(error.localizedDescription)")
-    }
-    
-    func qrScanner(_ controller: UIViewController, scanDidComplete result: String) {
+    func qrScanner(_ controller: UIViewController, didScanQRCodeWithResult result: String) {
         self.resultLabel.text = "Result: \n \(result)"
         print("result:\(result)")
     }
     
+    func qrScanner(_ controller: UIViewController, didFailWithError error: SwiftQRCodeScanner.QRCodeError) {
+        print("error:\(error.localizedDescription)")
+    }
+    
     func qrScannerDidCancel(_ controller: UIViewController) {
-        print("SwiftQRScanner did cancel")
+        print("QR Controller did cancel")
     }
 }
 

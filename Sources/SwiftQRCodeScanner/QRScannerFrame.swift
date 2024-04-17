@@ -5,10 +5,8 @@
 //  Created by Vinod Jagtap on 12/22/19.
 //
 
-
 #if os(iOS)
 import UIKit
-
 
 open class QRScannerFrame: UIView {
     
@@ -81,7 +79,6 @@ open class QRScannerFrame: UIView {
         path.lineWidth = thickness
         path.stroke()
     }
-    
 }
 
 #endif

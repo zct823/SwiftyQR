@@ -7,43 +7,25 @@
 
 import Foundation
 
-public enum QRCodeError: Error {
+public enum QRCodeError: Error, Equatable {
     case inputFailed
-    case outoutFailed
+    case outputFailed
     case emptyResult
 }
 
-extension QRCodeError: CustomStringConvertible {
-    public var description: String {
-        switch self {
-        case .inputFailed:
-            return "Failed to add input."
-        case .outoutFailed:
-            return "Failed to add output."
-        case .emptyResult:
-            return "Empty string found."
-        }
-    }
-}
-
-extension QRCodeError: LocalizedError {
+extension QRCodeError: CustomStringConvertible, LocalizedError {
     public var errorDescription: String? {
         switch self {
         case .inputFailed:
-            return NSLocalizedString(
-                "Failed to add input.",
-                comment: "Failed to add input."
-            )
-        case .outoutFailed:
-            return NSLocalizedString(
-                "Failed to add output.",
-                comment: "Failed to add output."
-            )
+            return NSLocalizedString("Failed to add input.", comment: "Failed to add input.")
+        case .outputFailed:
+            return NSLocalizedString("Failed to add output.", comment: "Failed to add output.")
         case .emptyResult:
-            return NSLocalizedString(
-                "Empty string found.",
-                comment: "Empty string found."
-            )
+            return NSLocalizedString("Empty string found", comment: "Empty string found.")
         }
+    }
+
+    public var description: String {
+        return errorDescription ?? ""
     }
 }

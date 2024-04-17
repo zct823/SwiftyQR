@@ -75,11 +75,11 @@ self.present(scanner, animated: true, completion: nil)
 ```
 And finally implement delegate methods to get result:
 ```Swift
-func qrScanner(_ controller: UIViewController, scanDidComplete result: String) {
+func qrScanner(_ controller: UIViewController, didScanQRCodeWithResult result: String) {
     print("result:\(result)")
 }
 
-func qrScannerDidFail(_ controller: UIViewController, error: QRCodeError) {
+func qrScanner(_ controller: UIViewController, didFailWithError error: SwiftQRCodeScanner.QRCodeError) {
     print("error:\(error.localizedDescription)")
 }
 
@@ -118,13 +118,13 @@ class ViewController: UIViewController {
     
 }
 
-extension ViewController: QRScannerCodeDelegate {
-    func qrScannerDidFail(_ controller: UIViewController, error: QRCodeError) {
-        print("error:\(error.localizedDescription)")
+extension ViewController: QRScannerCodeDelegate {    
+    func qrScanner(_ controller: UIViewController, didScanQRCodeWithResult result: String) {
+        print("result:\(result)")
     }
     
-    func qrScanner(_ controller: UIViewController, scanDidComplete result: String) {
-        print("result:\(result)")
+    func qrScanner(_ controller: UIViewController, didFailWithError error: SwiftQRCodeScanner.QRCodeError) {
+        print("error:\(error.localizedDescription)")
     }
     
     func qrScannerDidCancel(_ controller: UIViewController) {
@@ -151,6 +151,7 @@ You can use following **QRScannerConfiguration** properties:
 | readQRFromPhotos | true | Hide/show "Upload From photos" button|
 | cancelButtonTitle | "Cancel" | Title for cancel button |
 | cancelButtonTintColor | nil | Color for cancel button |
+| hideNavigationBar| false | Hide/show navigation bar |
 
 ## Author
 

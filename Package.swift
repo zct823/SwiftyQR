@@ -24,8 +24,7 @@ let package = Package(
         .target(
             name: "SwiftQRCodeScanner",
             dependencies: [],
-            path: "Sources",
-            exclude: ["Info.plist"]
+            path: "Sources"
          ),
     ],
     swiftLanguageVersions: [.v5]
